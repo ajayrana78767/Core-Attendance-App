@@ -25,21 +25,21 @@ class _LoginscreenState extends State<Loginscreen> {
         
       // ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [colorUtils.primaryColor, colorUtils.secondaryColor, colorUtils.tertiaryColor],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter
-            ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [colorUtils.primaryColor, colorUtils.secondaryColor, colorUtils.tertiaryColor],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter
+              ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
           
             Center(child: Image.asset("assets/images/cameraImage.png",
               width: 80, // Set width
               height: 80, // Set height
-              fit: BoxFit.cover,
+              
               )
             ),
             
@@ -51,8 +51,8 @@ class _LoginscreenState extends State<Loginscreen> {
                 )
               ),
               Container(
-                
-                margin: EdgeInsets.all(20),
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.all(10),
                 height: 400,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -68,31 +68,100 @@ class _LoginscreenState extends State<Loginscreen> {
                         color: Colors.black,
                         ),
                       ),
+                     Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              margin: EdgeInsets.all(10),
+                              height: 55,
+                              width: 100,
+                             
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(3), // Rounded corners
+                                border: Border.all(color: Colors.grey), 
+                              ),
+                              padding: EdgeInsets.all(10),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Image.asset("assets/images/ic_down_arrow.png",
+                                    width: 10, // Set width
+                                    height: 5, // Set height
+                              
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Image.asset("assets/images/indiaFlag.png",
+                                    width: 25, // Set width
+                                    height: 25, // Set height
+                              
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Text("+91")
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  labelText: "Mobile Number",
+                                  border: OutlineInputBorder(),
+                                ),
+                                
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(10),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  labelText: "Password",
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
+
+                      ),
                       
                       Container(
-                        margin: EdgeInsets.all(10),
-                        height: 55,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey, width: 1),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                            
+                        alignment: Alignment.topRight,
+                        child: TextButton(
+                          onPressed: () {
+                        
+                        },
+                        child: Text("Forgot Password", style: TextStyle(fontSize: 16, color: colorUtils.tertiaryColor),),
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.all(10),
-                        height: 55,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey, width: 1),
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          color: Colors.white,
+                        child: SizedBox(
+                          height: 55,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: colorUtils.tertiaryColor, // Button color
+                                foregroundColor: Colors.white, // Text color
+                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // Button padding
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10), // Rounded corners
+                                ),
+                              ),
+                            child: Text("Login",style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                          ),
                         ),
-                      ),
-
+                      ), 
                     ]
                 ),
-              )
+              ),
           ],
         ),
         

@@ -10,11 +10,11 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		Il3lS2dtCMKqTXqHgo02V6uB39E=
+		BPTEg9aeZCnOr3R3gB8yj5KFy/w=
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		T+nMQyJ3Y8TNDgekAYpK5FQ0OgA=
+		ZhVk/xhllJSc/+2BJrB1Zr3dUx8=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -28,9 +28,25 @@
 		<data>
 		re4p7E8rPLLsN+wzaPN/+AVpXTY=
 		</data>
+		<key>flutter_assets/assets/images/cameraImage.png</key>
+		<data>
+		iZCviZY3crNh60QiqydpFM3BwRk=
+		</data>
+		<key>flutter_assets/assets/images/ic_down_arrow.png</key>
+		<data>
+		Y8NMHRAR2SyRaMTiJKSjNYbn6zo=
+		</data>
 		<key>flutter_assets/assets/images/image.jpg</key>
 		<data>
 		qnS5ctlwALXI1iLRdk9RB29wQYo=
+		</data>
+		<key>flutter_assets/assets/images/image1.png</key>
+		<data>
+		6YAP0QsB/Czg4tRufwzVQK7p43w=
+		</data>
+		<key>flutter_assets/assets/images/indiaFlag.png</key>
+		<data>
+		QkSIMGGkFCGTYJ5JEtrdZ2bfmOU=
 		</data>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -42,7 +58,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		HeLaeMAKHtKmZ9A0YBCwMZbpMzU=
+		Ae06OoaN559AS2g3yLx5ihhsTzU=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -63,14 +79,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			VWcrPSTLDDfKzT4ZxcJmDUFDMD/1SaQra4g5anV/HVQ=
+			I5DxETp11lrt4FpOukghah1RF33W3JrlAqQYOwfhor8=
 			</data>
 		</dict>
 		<key>flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6khuOnhSaZKfjfSmLlLL+oYbwn7jS17Dx+79aiQQHPY=
+			s3ggqdtIr8gQ6+OCK0uoTxlNJeHwpAlug0wV0gsHEzc=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -94,11 +110,39 @@
 			lUijHkoEgTXB2U+Rkyi/tirix7s8q5ZVfHlB2ql3dss=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/images/cameraImage.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Xv/NvLA13SKAQy6iIucnIqJezkmenIAx4OzY/LR2KFQ=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/ic_down_arrow.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9f2scDsezjy9FAa64JVGlitgy9GadBZ7pFNXB1MkWD4=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/images/image.jpg</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			3eWT2tQEh2jTLdKrAtG6tEVNP9+TynPxNj7T+tMlECI=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/image1.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			nM/pZeWkUZk2rgdCRMqodjXD8NRwRSjs5O7qEcldHBw=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/indiaFlag.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			4xhDls9TO8cmJVPbI7HvzaG7ICJdaSeEu6UTvF4d64g=
 			</data>
 		</dict>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -119,7 +163,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zBipeYWF0BL/s3N5QI8DxZWAQa3Z0NBnuMNWMB7elWs=
+			cghoVmRmSGeXtLvQpy9ct9T8IhO4sfPKrCD5QaT1eME=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
