@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:new_project/Screens/dashboardscreen.dart';
+import 'package:new_project/Screens/registrationscreen.dart';
 import 'package:new_project/Utils/colors_utils.dart';
 
 class Loginscreen extends StatefulWidget {
@@ -51,8 +53,8 @@ class _LoginscreenState extends State<Loginscreen> {
                 )
               ),
               Container(
-                padding: EdgeInsets.all(10),
-                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(20),
+                margin: EdgeInsets.all(20),
                 height: 400,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -68,11 +70,11 @@ class _LoginscreenState extends State<Loginscreen> {
                         color: Colors.black,
                         ),
                       ),
-                     Row(
+                      Spacer(),
+                      Row(
                         children: [
-                          Expanded(
-                            child: Container(
-                              margin: EdgeInsets.all(10),
+                            Container(
+                              margin: EdgeInsets.only(right: 10),
                               height: 55,
                               width: 100,
                              
@@ -80,54 +82,47 @@ class _LoginscreenState extends State<Loginscreen> {
                                 borderRadius: BorderRadius.circular(3), // Rounded corners
                                 border: Border.all(color: Colors.grey), 
                               ),
-                              padding: EdgeInsets.all(10),
+                            
                               child: Row(
                                 children: [
-                                  Expanded(
-                                    child: Image.asset("assets/images/ic_down_arrow.png",
+                                  Spacer(),
+                                  Image.asset("assets/images/ic_down_arrow.png",
                                     width: 10, // Set width
                                     height: 5, // Set height
                               
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: Image.asset("assets/images/indiaFlag.png",
+                                  Spacer(),
+                                  
+                                  Image.asset("assets/images/indiaFlag.png",
                                     width: 25, // Set width
                                     height: 25, // Set height
                               
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: Text("+91")
-                                  ),
+                                  Spacer(),
+                                  Text("+91"),
+                                  Spacer(),
                                 ],
                               ),
                             ),
-                          ),
                           Expanded(
-                            child: Container(
-                              padding: EdgeInsets.all(10),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  labelText: "Mobile Number",
-                                  border: OutlineInputBorder(),
-                                ),
-                                
-                              ),
+                            child: TextField(
+                              decoration: InputDecoration(
+                                labelText: "Mobile Number",
+                                border: OutlineInputBorder(),
+                              ),  
                             ),
                           ),
                         ],
                       ),
-                      Container(
-                        padding: EdgeInsets.all(10),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  labelText: "Password",
-                                  border: OutlineInputBorder(),
-                                ),
+                        Container(
+                          padding: EdgeInsets.only(top: 10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              labelText: "Password",
+                              border: OutlineInputBorder(),
                               ),
-
-                      ),
+                            ),
+                        ),
                       
                       Container(
                         alignment: Alignment.topRight,
@@ -135,30 +130,46 @@ class _LoginscreenState extends State<Loginscreen> {
                           onPressed: () {
                         
                         },
-                        child: Text("Forgot Password", style: TextStyle(fontSize: 16, color: colorUtils.tertiaryColor),),
+                        child: Text("Forgot Password?", style: TextStyle(fontSize: 14, color: colorUtils.tertiaryColor),),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        child: SizedBox(
-                          height: 55,
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: colorUtils.tertiaryColor, // Button color
-                                foregroundColor: Colors.white, // Text color
-                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // Button padding
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10), // Rounded corners
-                                ),
+                      Spacer(),
+                      SizedBox(
+                        height: 50,
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Dashboardscreen()),
+                            );  
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: colorUtils.tertiaryColor, // Button color
+                              foregroundColor: Colors.white, // Text color
+                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12), // Button padding
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10), // Rounded corners
                               ),
-                            child: Text("Login",style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                          ),
+                            ),
+                          child: Text("Login",style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
                         ),
-                      ), 
+                      ),
+                      Spacer(),
+                      Text("----------or----------"),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center, 
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("Don’t have an account?"),
+                          TextButton(onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Registrationscreen()),
+                            );
+                          }, child: Text("Registration",style: TextStyle(color: colorUtils.tertiaryColor),))
+                        ],
+                      ),
                     ]
                 ),
               ),
