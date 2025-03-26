@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:new_project/Screens/loginscreen.dart';
+import 'package:new_project/Screens/notificationScreen.dart';
+import 'package:new_project/Screens/profileScreen.dart';
 import 'package:new_project/Utils/colors_utils.dart';
 
 class Dashboardscreen extends StatefulWidget {
   const Dashboardscreen({super.key});
 
   @override
+ 
   State<Dashboardscreen> createState() => _DashboardscreenState();
 }
 
@@ -14,6 +17,28 @@ class _DashboardscreenState extends State<Dashboardscreen> {
   @override
   Widget build(BuildContext context) {
     var arrMonth = ['Monady','Tuesday','Wednesday','Thrsday','Friday','Saturday','Sunday'];
+    int selectedIndex = 0; 
+
+     // Method to handle tab selection
+  void onItemTapped(int index) {
+    if (index == 1) { // Assuming index 1 should open a new screen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Profilescreen()),
+    );
+    } if (index == 2) { // Assuming index 1 should open a new screen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Notificationscreen()),
+    );
+  } else {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+    
+  }
+  
     return Scaffold(
       
        body: Stack(
@@ -181,8 +206,53 @@ class _DashboardscreenState extends State<Dashboardscreen> {
             decoration: BoxDecoration(
               color: Colors.grey,
             ),
+            
           ),
+         
  
+        ],
+      ),
+      bottomNavigationBar: Stack(
+        children: [
+          // Gradient Background
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Container(
+              height: 100, // Adjust height based on the BottomNavigationBar
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [colorUtils.primaryColor, colorUtils.secondaryColor, colorUtils.tertiaryColor],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+            ),
+          ),
+          BottomNavigationBar(
+            
+            backgroundColor: Colors.transparent, // Makes it blend with the gradient
+            elevation: 0, // Removes shadow
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white70,
+            currentIndex: selectedIndex,
+            onTap: onItemTapped,
+            items: [
+              BottomNavigationBarItem(
+                icon: Image.asset("assets/images/home.png", width: 24, height: 24),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Image.asset("assets/images/profile.png", width: 24, height: 24),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Image.asset("assets/images/notification.png", width: 24, height: 24),
+                label: '',
+              ),
+            ],
+          ),
         ],
       ),
     );
