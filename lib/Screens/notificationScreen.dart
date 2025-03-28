@@ -1,4 +1,7 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:new_project/Utils/colors_utils.dart';
+
 
 class Notificationscreen extends StatefulWidget {
   const Notificationscreen({super.key});
@@ -8,50 +11,38 @@ class Notificationscreen extends StatefulWidget {
 }
 
 class _NotificationscreenState extends State<Notificationscreen> {
+  var arrMonth = ['Monady','Tuesday','Wednesday','Thrsday','Friday','Saturday','Sunday'];
+  ColorsUtils colorUtils = ColorsUtils();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notification"),
+        title: Text("Notification", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+        foregroundColor: Colors.white,
+        flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [colorUtils.primaryColor, colorUtils.secondaryColor, colorUtils.tertiaryColor],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+          ),
+          elevation: 0,
       ),
-      body: ListView.builder(
-        scrollDirection: Axis.vertical,
-        itemBuilder: (context, index) {            
-          return Container(
-                margin: EdgeInsets.all(10),
-                alignment: Alignment.center,
-                height: 80,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10), // Rounded corners
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey, // Shadow color
-                      blurRadius: 2, // How soft the shadow looks
-                    ),
-                  ],
-                ),
-                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Image.asset("assets/images/customerIcon.png", height: 60,  width: 60,),
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text("Notifications", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-                        )
-                        ),
-                      Image.asset("assets/images/arrowIcon.png", height: 18,width: 10,),
-                    ],
-                  ),
-                ),
-          );
+      body: ListView.separated(itemBuilder: (context, index) {
+        return ListTile(
+          leading: Image.asset("assets/images/profileImg.png", height: 50, width: 50, fit: BoxFit.fill,),
+          title: Text(arrMonth[index]),
+          subtitle: Text('Number'),
+          trailing: Icon(Icons.add),
+        );
         },
-        itemCount: 20,
-      )
+        itemCount: arrMonth.length,
+        separatorBuilder: (context, index) {
+          return Divider(height: 20, thickness: 1,);
+        },
+      ),
     );
   }
 }

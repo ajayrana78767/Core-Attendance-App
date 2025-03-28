@@ -93,8 +93,8 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("00:00:00", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
-                      Text("Sunday, 15 Aug 2024",style: TextStyle(fontSize: 16, color: Colors.grey),),
+                      Text("00:00:00", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),),
+                      Text("Sunday, 15 Aug 2024",style: TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'Roboto'),),
                       
                       Row(
              
@@ -224,7 +224,7 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                     children: [
                       Container(
                         height: 110,
-                        width: (MediaQuery.of(context).size.width - 50) / 2,
+                        width: (MediaQuery.of(context).size.width - 60) / 2,
                         decoration: BoxDecoration(
                           color: colorUtils.lightGreenClr, 
                           borderRadius: BorderRadius.circular(12),
@@ -241,7 +241,7 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                      
                       Container(
                         height: 110,
-                        width: (MediaQuery.of(context).size.width - 50) / 2,
+                        width: (MediaQuery.of(context).size.width - 60) / 2,
                         decoration: BoxDecoration(
                           color: colorUtils.lightBlueClr, 
                           borderRadius: BorderRadius.circular(12),
@@ -268,7 +268,8 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey, // Shadow color
-                      blurRadius: 2, // How soft the shadow looks
+                      blurRadius: 4,
+                      spreadRadius: 1,
                     ),
                   ],
                 ),
@@ -300,7 +301,8 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey, // Shadow color
-                      blurRadius: 2, // How soft the shadow looks
+                      blurRadius: 4,
+                      spreadRadius: 1,
                     ),
                   ],
                 ),
