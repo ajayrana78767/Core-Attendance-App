@@ -30,18 +30,18 @@ class _NotificationscreenState extends State<Notificationscreen> {
           ),
           elevation: 0,
       ),
-      body: ListView.separated(itemBuilder: (context, index) {
-        return ListTile(
-          leading: Image.asset("assets/images/profileImg.png", height: 50, width: 50, fit: BoxFit.fill,),
-          title: Text(arrMonth[index]),
-          subtitle: Text('Number'),
-          trailing: Icon(Icons.add),
+      body: ListView.builder(itemBuilder: (context, index) {
+        return Card(
+          margin: EdgeInsets.all(10),
+          child: ListTile(
+            leading: Image.asset("assets/images/profileImg.png", height: 50, width: 50, fit: BoxFit.fill,),
+            title: Text(arrMonth[index]),
+            subtitle: Text('Number'),
+            trailing: Icon(Icons.add),
+          ),
         );
         },
         itemCount: arrMonth.length,
-        separatorBuilder: (context, index) {
-          return Divider(height: 20, thickness: 1,);
-        },
       ),
     );
   }

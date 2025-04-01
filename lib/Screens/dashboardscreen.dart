@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:new_project/Screens/customerscreen.dart';
+import 'package:new_project/Screens/historyscreen.dart';
 import 'package:new_project/Screens/notificationScreen.dart';
 import 'package:new_project/Screens/profileScreen.dart';
 import 'package:new_project/Utils/colors_utils.dart';
@@ -257,71 +259,87 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                     ],
                   ),
               ),
-              Container(
-                margin: EdgeInsets.only(left: 20,right: 20),
-                alignment: Alignment.center,
-                
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10), // Rounded corners
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey, // Shadow color
-                      blurRadius: 4,
-                      spreadRadius: 1,
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Image.asset("assets/images/historyIcon.png", height: 60,  width: 60,),
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text("History", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-                        )
-                        ),
-                      Image.asset("assets/images/arrowIcon.png", height: 18,width: 10,),
+              InkWell(
+                child: Container(
+                  margin: EdgeInsets.only(left: 20,right: 20),
+                  alignment: Alignment.center,
+                  
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10), // Rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey, // Shadow color
+                        blurRadius: 4,
+                        spreadRadius: 1,
+                      ),
                     ],
                   ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Image.asset("assets/images/historyIcon.png", height: 60,  width: 60,),
+                        Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text("History", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                          )
+                          ),
+                        Image.asset("assets/images/arrowIcon.png", height: 18,width: 10,),
+                      ],
+                    ),
+                  ),
                 ),
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Historyscreen()),
+                  );
+                },
               ),
-              Container(
-                margin: EdgeInsets.all(20),
-                alignment: Alignment.center,
-                height: 80,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10), // Rounded corners
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey, // Shadow color
-                      blurRadius: 4,
-                      spreadRadius: 1,
-                    ),
-                  ],
-                ),
-                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Image.asset("assets/images/customerIcon.png", height: 60,  width: 60,),
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text("Customer", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
-                        )
-                        ),
-                      Image.asset("assets/images/arrowIcon.png", height: 18,width: 10,),
+              InkWell(
+                child: Container(
+                  margin: EdgeInsets.all(20),
+                  alignment: Alignment.center,
+                  height: 80,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10), // Rounded corners
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey, // Shadow color
+                        blurRadius: 4,
+                        spreadRadius: 1,
+                      ),
                     ],
                   ),
+                   child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Image.asset("assets/images/customerIcon.png", height: 60,  width: 60,),
+                        Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text("Customer", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                          )
+                          ),
+                        Image.asset("assets/images/arrowIcon.png", height: 18,width: 10,),
+                      ],
+                    ),
+                  ),
                 ),
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Customerscreen()),
+                  );
+                },
               ),
            ],
          ),
