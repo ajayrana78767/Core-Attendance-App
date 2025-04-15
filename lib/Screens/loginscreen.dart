@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:new_project/Screens/bottom_navigation.dart';
 import 'package:new_project/Screens/registrationscreen.dart';
 import 'package:new_project/Utils/colors_utils.dart';
-import 'package:new_project/Screens/dashboardscreen.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({super.key});
@@ -15,19 +15,22 @@ class _LoginscreenState extends State<Loginscreen> {
   ColorsUtils colorUtils = ColorsUtils();
   TextEditingController userName = TextEditingController();
   TextEditingController password = TextEditingController();
+
   // ignore: non_constant_identifier_names
   Future<void> loginApi() async {
-    final dio = Dio();
-    // var body = {
-    //   "employee_code" : userName.text,
-    //   "password" : password.text,
-    //   "fcm_token" : "dfE3a096Rd-X0OJV1MMJnb:APA91bG9_TLbJ5yMaYSP2o9E3pMU4DAkyD6VHARBxsRRjCM8wgf8DJHmpS-gZ-SRrQBfnrEyJIKF_kekhtd84iWOO2jXSKr4NRoSGPaAT93GF38f-ThOhvQ",
-    //   "platform" : "1"
-
-    // };
     
-    final response = await dio.get("https://synergysoftindia.com/attcore/api/get-employees-list");
+    final dio = Dio();
+    var body = {
+      "is_email":"0",
+      "phone" : userName.text,
+      "password" : password.text,
+
+    };
+    print(body);
+    
+    final response = await dio.post("https://synergysoftindia.com/pizza/api/login", data: body);
     print(response.data);
+    
   }
 
   @override
@@ -140,6 +143,7 @@ class _LoginscreenState extends State<Loginscreen> {
                           onPressed: () {
                         
                         },
+                        
                         child: Text("Forgot Password?", style: TextStyle(fontSize: 14, color: colorUtils.tertiaryColor),),
                         ),
                       ),
@@ -151,9 +155,9 @@ class _LoginscreenState extends State<Loginscreen> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Dashboardscreen()),
+                              MaterialPageRoute(builder: (context) => BottomNavigation()),
                             );
-                           // loginApi();  
+                           //loginApi();  
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: colorUtils.tertiaryColor, // Button color
@@ -172,7 +176,7 @@ class _LoginscreenState extends State<Loginscreen> {
                         mainAxisAlignment: MainAxisAlignment.center, 
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("Don’t have an account?"),
+                          Text("Don't have an account?"),
                           TextButton(onPressed: () {
                             Navigator.push(
                               context,

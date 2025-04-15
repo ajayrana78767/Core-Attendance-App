@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:new_project/Screens/loginscreen.dart';
-import 'package:new_project/Utils/colors_utils.dart';
 
 void main() {
   runApp(const MyApp());

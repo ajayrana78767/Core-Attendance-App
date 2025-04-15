@@ -32,12 +32,6 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "csslib",
-      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/csslib-1.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
-    },
-    {
       "name": "cupertino_icons",
       "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.8",
       "packageUri": "lib/",
@@ -86,10 +80,10 @@
       "languageVersion": "3.5"
     },
     {
-      "name": "flutter_plugin_android_lifecycle",
-      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.27",
+      "name": "flutter_snake_navigationbar",
+      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/flutter_snake_navigationbar-0.6.1",
       "packageUri": "lib/",
-      "languageVersion": "3.6"
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_test",
@@ -102,48 +96,6 @@
       "rootUri": "file:///Users/rajmohan/development/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.7"
-    },
-    {
-      "name": "google_maps",
-      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/google_maps-8.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "google_maps_flutter",
-      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/google_maps_flutter-2.12.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "google_maps_flutter_android",
-      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.16.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.6"
-    },
-    {
-      "name": "google_maps_flutter_ios",
-      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/google_maps_flutter_ios-2.15.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "google_maps_flutter_platform_interface",
-      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/google_maps_flutter_platform_interface-2.11.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "google_maps_flutter_web",
-      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/google_maps_flutter_web-0.5.12",
-      "packageUri": "lib/",
-      "languageVersion": "3.4"
-    },
-    {
-      "name": "html",
-      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/html-0.15.5",
-      "packageUri": "lib/",
-      "languageVersion": "3.2"
     },
     {
       "name": "http_parser",
@@ -236,12 +188,6 @@
       "languageVersion": "3.0"
     },
     {
-      "name": "sanitize_html",
-      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/sanitize_html-2.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "shared_preferences",
       "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/shared_preferences-2.5.3",
       "packageUri": "lib/",
@@ -312,12 +258,6 @@
       "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/stream_channel-2.1.4",
       "packageUri": "lib/",
       "languageVersion": "3.3"
-    },
-    {
-      "name": "stream_transform",
-      "rootUri": "file:///Users/rajmohan/.pub-cache/hosted/pub.dev/stream_transform-2.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "3.1"
     },
     {
       "name": "string_scanner",
@@ -392,7 +332,7 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-04-01T06:45:31.282552Z",
+  "generated": "2025-04-15T09:52:20.271474Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
   "flutterRoot": "file:///Users/rajmohan/development/flutter",

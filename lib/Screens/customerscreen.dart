@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:new_project/Screens/bmicalculatorscreen.dart';
 import 'package:new_project/Utils/colors_utils.dart';
-import 'package:new_project/models/get_employee.dart';
+import 'package:new_project/models/models.dart';
 
 class Customerscreen extends StatefulWidget {
   const Customerscreen({super.key});
@@ -63,7 +64,6 @@ class _CustomerscreenState extends State<Customerscreen> {
           elevation: 0,
       ),
       body: isLoading?Center(child: CircularProgressIndicator()): ListView.builder(itemBuilder: (context, index) {
-        print(employees!.length);
         var employee = employees![index];
         
         return Card(
@@ -73,7 +73,14 @@ class _CustomerscreenState extends State<Customerscreen> {
             title: Text(employee.name!),
             subtitle: Text(employee.mobile!.toString()),
             trailing: Image.asset("assets/images/arrowIcon.png", height: 18, width: 10, fit: BoxFit.fill,),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Bmicalculatorscreen()),
+              );
+            },
           ),
+          
         );
         },
         itemCount: employees!.length,
