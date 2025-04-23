@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:new_project/Screens/customerscreen.dart';
 import 'package:new_project/Screens/historyscreen.dart';
+import 'package:new_project/Screens/loginscreen.dart';
 import 'package:new_project/Utils/colors_utils.dart';
+import 'package:dio/dio.dart';
+import 'package:new_project/Utils/constant_utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class Dashboardscreen extends StatefulWidget {
   const Dashboardscreen({super.key});
@@ -16,10 +21,48 @@ class _DashboardscreenState extends State<Dashboardscreen> {
   
   bool isCheckedIn = false;
   bool isOnBreak = false;
+  bool isLoading = false;
+
+
+Future<void> logoutApi() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    final dio = Dio();
+    String authToken = pref.getString(PREF_AUTH_TOKEN) ?? "";
+    print("Token: $authToken");
+    dio.options.headers['Authorization'] = 'Bearer $authToken';
+  
+    final response = await dio.post("https://synergysoftindia.com/pizza/api/logout");
+    var message = response.data["message"];
+    if (response.statusCode == 200) {
+        pref.clear();
+        debugPrint(message);
+       Navigator.pushAndRemoveUntil(
+        context,
+           MaterialPageRoute(builder: (context) => const Loginscreen()),
+          (Route<dynamic> route) => false,
+          );
+        return;
+      } else {
+        debugPrint("Logout failed with status code: ${response.statusCode}");
+        return;
+      }
+      
+    } on DioException catch (dioerror) {
+      print("DioError $dioerror");
+    }
+    catch(e) {
+      print("Error $e");
+       setState(() {
+      isLoading = false;
+    });
+    }
+}
   @override
   Widget build(BuildContext context) {
-    
-    var arrMonth = ['Monady','Tuesday','Wednesday','Thrsday','Friday','Saturday','Sunday'];
   
     return Scaffold(
       
@@ -56,6 +99,56 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                             Text("Attendance, Please!", style: TextStyle(fontSize: 16, color: Colors.white,)),
                               ],
                             ),
+                          Spacer(),
+                          ElevatedButton(onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  title: Text('Confirm Logout'),
+                                  content: Text('Are you sure you want to log out?'),
+                                  actions: [
+                                    TextButton(
+                                      child: Text(
+                                        'Cancel', 
+                                        style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700,
+                                        color: colorUtils.secondaryColor,
+                                      ),),
+                                      onPressed: () {
+                                        Navigator.of(context).pop(); // Dismiss the dialog
+                                      },
+                                    ),
+                                    TextButton(
+                                      child: Text('Logout',style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700,
+                                        color: colorUtils.primaryColor,
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        // Handle OK action
+                                        logoutApi();
+                                        print("Logout");
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+
+                                                        
+                          }, 
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent, // Transparent background
+                              shadowColor: Colors.transparent,     // Remove shadow
+                              elevation: 0,                        // Remove elevation
+                            ),
+                          child: Icon(Icons.logout, color: Colors.white, size: 24,),)
+                          
                           ],
                         ),
                       
@@ -78,6 +171,7 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("00:00:00", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),),
+                        Text("HH:MM:SS",style: TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'Roboto'),),
                         Text("Sunday, 15 Aug 2024",style: TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'Roboto'),),
                         
                  
@@ -96,14 +190,6 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                           ),
                         if (isCheckedIn && !isOnBreak) ...[
                           buildButton(
-                          label: "Check Out",
-                          onPressed: () {
-                            setState(() {
-                              isCheckedIn = false;
-                            });
-                          },
-                        ),
-                          buildButton(
                           label: "Take a break",
                           onPressed: () {
                             setState(() {
@@ -111,6 +197,15 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                             });
                           },
                         ),
+                          buildButton(
+                          label: "Check Out",
+                          onPressed: () {
+                            setState(() {
+                              isCheckedIn = false;
+                            });
+                          },
+                        ),
+                          
                       ],
                         if (isCheckedIn && isOnBreak)
                             buildButton(
@@ -133,40 +228,90 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                     alignment: Alignment.center,
                     height: 150,
                     width: double.infinity,
-                    margin: EdgeInsets.only(top: 400,),
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                        
-                        return Container(
-                          margin: EdgeInsets.all(10),
-                          padding: EdgeInsets.all(10),
-                          width: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10), // Rounded corners
-                            boxShadow: [
-                              BoxShadow(
-                               
-                                color: Colors.black, // Shadow color
-                                
-                                blurRadius: 2, // How soft the shadow looks
-                                offset: Offset(2, 2), // X and Y offset
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset("assets/images/timeImg.png", height: 30, width: 30,),
-                              Text(arrMonth[index], style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),),
-                              Text("data", style: TextStyle(fontSize: 14, color: Colors.grey),)
-                            ],
-                          ),
-                        );
-                      },
-                      itemCount: arrMonth.length,
+                    margin: EdgeInsets.only(top: 400, left: 20, right: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: [
+                        BoxShadow(
+                          // ignore: deprecated_member_use
+                          color: Colors.black.withOpacity(0.2),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                      
                     ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                             Column(
+                                  children: [
+                                    Text("Check In", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),),
+                                    Text("09:15 AM",style: TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'Roboto'),),
+                                  ],
+                                ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  width: 1,
+                                  height: 50,
+                                  color: Colors.grey, // set background color
+                                ),
+                              ),
+                              Column(
+                                  children: [
+                                    Text("Check Out", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),),
+                                    Text("09:15 AM",style: TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'Roboto'),),
+                                  ],
+                                ),
+                              
+                            ],
+                          ),
+                          Padding(
+                                padding: const EdgeInsets.only(right: 20, left: 20),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 1,
+                                  color: Colors.grey, // set background color
+                                ),
+                              ),
+                         
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                             Column(
+                                  children: [
+                                    Text("Break Time", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),),
+                                    Text("09:15 AM",style: TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'Roboto'),),
+                                  ],
+                                ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  width: 1,
+                                  height: 50,
+                                  color: Colors.grey, // set background color
+                                ),
+                              ),
+                               Column(
+                                  children: [
+                                    Text("Total Time", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),),
+                                    Text("09:15 AM",style: TextStyle(fontSize: 16, color: Colors.grey, fontFamily: 'Roboto'),),
+                                  ],
+                                ),
+                              
+                            ],
+                          )
+                        ],  
+                      ),
+                    ),
+                                        
                   ),
                   
                  
@@ -182,12 +327,9 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
+                  child: Container(
                           height: 110,
-                          width: (MediaQuery.of(context).size.width - 60) / 2,
+                          width: double.infinity,
                           decoration: BoxDecoration(
                             color: colorUtils.lightGreenClr, 
                             borderRadius: BorderRadius.circular(12),
@@ -201,24 +343,6 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                           ),
                           
                         ),
-                       
-                        Container(
-                          height: 110,
-                          width: (MediaQuery.of(context).size.width - 60) / 2,
-                          decoration: BoxDecoration(
-                            color: colorUtils.lightBlueClr, 
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("0", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),),
-                              Text("Absent", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),)
-                            ],
-                          ), 
-                        ),
-                      ],
-                    ),
                 ),
                 HistoryContainer(),
                 
@@ -267,13 +391,13 @@ class _DashboardscreenState extends State<Dashboardscreen> {
            ),
          ),
        ),
-
-      
       
       );
 
   }
 }
+
+
 class HistoryContainer extends StatelessWidget {
   const HistoryContainer({super.key});
 
